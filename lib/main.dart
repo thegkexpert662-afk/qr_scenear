@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'screens/ad_home_screen.dart';
@@ -5,8 +6,14 @@ import 'services/rewarded_ad_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await MobileAds.instance.initialize();
-  rewardedAdService.load();
+
+  // Google Mobile Ads is supported on Android/iOS, not Flutter Web.
+  // Keep the web build working by skipping Ads initialization on Web.
+  if (!kIsWeb) {
+    await MobileAds.instance.initialize();
+    rewardedAdService.load();
+  }
+
   runApp(const QRApplication());
 }
 
