@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
               ),
               clipBehavior: Clip.antiAlias,
               child: Image.asset(
-                'assets/images/kopsay_logo.png',
+                'assets/images/kopsay_logo1.png',
                 width: 48,
                 height: 48,
                 fit: BoxFit.cover,
@@ -66,11 +66,6 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              // =========================================================
-              // WELCOME CARD
-              // =========================================================
-
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(22),
@@ -92,7 +87,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-
                 child: Row(
                   children: [
                     Expanded(
@@ -107,9 +101,7 @@ class HomeScreen extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-
                           SizedBox(height: 8),
-
                           Text(
                             'Fast and simple QR tools\nfor everyday use.',
                             style: TextStyle(
@@ -121,7 +113,6 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-
                     Container(
                       width: 82,
                       height: 82,
@@ -141,10 +132,6 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 28),
 
-              // =========================================================
-              // QUICK ACTIONS
-              // =========================================================
-
               const Text(
                 'Quick Actions',
                 style: TextStyle(
@@ -156,7 +143,6 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 14),
 
-              // Scan QR
               _ActionCard(
                 icon: Icons.qr_code_scanner,
                 title: 'Scan QR Code',
@@ -174,7 +160,6 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 14),
 
-              // Generate QR
               _ActionCard(
                 icon: Icons.add_box_outlined,
                 title: 'Generate QR Code',
@@ -191,7 +176,6 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 14),
 
-              // History
               _ActionCard(
                 icon: Icons.history,
                 title: 'Scan History',
@@ -208,10 +192,6 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              // =========================================================
-              // QR TOOLS
-              // =========================================================
-
               const Text(
                 'QR Tools',
                 style: TextStyle(
@@ -223,13 +203,8 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 14),
 
-              // ---------------------------------------------------------
-              // WEBSITE + UPI
-              // ---------------------------------------------------------
-
               Row(
                 children: [
-
                   Expanded(
                     child: _SmallToolCard(
                       icon: Icons.language,
@@ -245,9 +220,7 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
-
                   const SizedBox(width: 12),
-
                   Expanded(
                     child: _SmallToolCard(
                       icon: Icons.account_balance_wallet_outlined,
@@ -268,13 +241,8 @@ class HomeScreen extends StatelessWidget {
 
               const SizedBox(height: 12),
 
-              // ---------------------------------------------------------
-              // WIFI + CONTACT
-              // ---------------------------------------------------------
-
               Row(
                 children: [
-
                   Expanded(
                     child: _SmallToolCard(
                       icon: Icons.wifi,
@@ -290,9 +258,7 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
-
                   const SizedBox(width: 12),
-
                   Expanded(
                     child: _SmallToolCard(
                       icon: Icons.contact_page_outlined,
@@ -312,10 +278,6 @@ class HomeScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 30),
-
-              // =========================================================
-              // FOOTER
-              // =========================================================
 
               Center(
                 child: Text(
@@ -347,11 +309,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-
-// =======================================================================
-// ACTION CARD
-// =======================================================================
-
 class _ActionCard extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -372,23 +329,18 @@ class _ActionCard extends StatelessWidget {
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
-
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         onTap: onTap,
-
         child: Container(
           padding: const EdgeInsets.all(18),
-
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-
             border: Border.all(
               color: primary
                   ? Colors.transparent
                   : const Color(0xFFE5EAF0),
             ),
-
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.04),
@@ -397,36 +349,28 @@ class _ActionCard extends StatelessWidget {
               ),
             ],
           ),
-
           child: Row(
             children: [
-
               Container(
                 width: 56,
                 height: 56,
-
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-
                   color: primary
                       ? const Color(0xFFE3F2FD)
                       : const Color(0xFFF1F5F9),
                 ),
-
                 child: Icon(
                   icon,
                   color: const Color(0xFF1565C0),
                   size: 28,
                 ),
               ),
-
               const SizedBox(width: 16),
-
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Text(
                       title,
                       style: const TextStyle(
@@ -435,9 +379,7 @@ class _ActionCard extends StatelessWidget {
                         color: Color(0xFF102A43),
                       ),
                     ),
-
                     const SizedBox(height: 5),
-
                     Text(
                       subtitle,
                       style: const TextStyle(
@@ -448,7 +390,6 @@ class _ActionCard extends StatelessWidget {
                   ],
                 ),
               ),
-
               const Icon(
                 Icons.arrow_forward_ios,
                 size: 17,
@@ -462,17 +403,10 @@ class _ActionCard extends StatelessWidget {
   }
 }
 
-
-// =======================================================================
-// SMALL TOOL CARD
-// =======================================================================
-
 class _SmallToolCard extends StatelessWidget {
   final IconData icon;
   final String title;
   final String subtitle;
-
-  // NEW: Card ko clickable banane ke liye
   final VoidCallback onTap;
 
   const _SmallToolCard({
@@ -487,22 +421,17 @@ class _SmallToolCard extends StatelessWidget {
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(18),
-
       child: InkWell(
         borderRadius: BorderRadius.circular(18),
         onTap: onTap,
-
         child: Container(
           padding: const EdgeInsets.all(16),
-
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(18),
-
             border: Border.all(
               color: const Color(0xFFE5EAF0),
             ),
-
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.035),
@@ -511,19 +440,15 @@ class _SmallToolCard extends StatelessWidget {
               ),
             ],
           ),
-
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Icon(
                 icon,
                 color: const Color(0xFF1976D2),
                 size: 27,
               ),
-
               const SizedBox(height: 12),
-
               Text(
                 title,
                 style: const TextStyle(
@@ -532,9 +457,7 @@ class _SmallToolCard extends StatelessWidget {
                   color: Color(0xFF102A43),
                 ),
               ),
-
               const SizedBox(height: 4),
-
               Text(
                 subtitle,
                 style: const TextStyle(
