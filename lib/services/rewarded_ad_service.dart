@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class RewardedAdService {
@@ -8,6 +9,9 @@ class RewardedAdService {
       'ca-app-pub-3940256099942544/5224354917';
 
   void load() {
+    // Google Mobile Ads is not supported on Flutter Web.
+    if (kIsWeb) return;
+
     if (_rewardedAd != null || _isLoading) return;
 
     _isLoading = true;
@@ -41,9 +45,12 @@ class RewardedAdService {
     );
   }
 
-  bool get isReady => _rewardedAd != null;
+  bool get isReady => !kIsWeb && _rewardedAd != null;
 
   void show({required void Function() onRewardEarned}) {
+    // Ads are skipped on Flutter Web.
+    if (kIsWeb) return;
+
     final ad = _rewardedAd;
     if (ad == null) {
       load();
