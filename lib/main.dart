@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'screens//home_screen.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'screens/ad_home_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
   runApp(const QRApplication());
 }
 
@@ -19,7 +22,7 @@ class QRApplication extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const AdHomeScreen(),
     );
   }
 }
