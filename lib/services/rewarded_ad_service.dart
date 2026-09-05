@@ -64,3 +64,5 @@ class RewardedAdService {
     _rewardedAd = null;
   }
 }
+
+final rewardedAdService = RewardedAdService();
