@@ -2,12 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'screens/home_screen.dart';
+import 'widgets/banner_ad_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Google Mobile Ads is supported on Android/iOS, not Flutter Web.
-  // The Home screen no longer displays the Watch Ad section.
+  // Keep the Home screen banner ad, but remove the Watch Ad button.
   if (!kIsWeb) {
     await MobileAds.instance.initialize();
   }
@@ -29,7 +30,14 @@ class QRApplication extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: Scaffold(
+        body: Column(
+          children: [
+            const Expanded(child: HomeScreen()),
+            if (!kIsWeb) const BannerAdWidget(),
+          ],
+        ),
+      ),
     );
   }
 }
